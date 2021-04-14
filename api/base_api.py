@@ -1,7 +1,7 @@
 import requests
 
 
-class Base:
+class BaseApi:
     """基础类"""
 
     def __init__(self):
@@ -29,3 +29,14 @@ class Base:
         url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken'
         r = requests.get(url=url, params=params)
         return r.json()
+
+    def request(self, method, url, **kwargs):
+        """
+        request函数封装
+        :param method: 接口请求方式
+        :param url: 接口地址
+        :param kwargs: 其他参数
+        :return: 请求返回的结果
+        """
+        request_data = self.s.request(method, url, **kwargs)
+        return request_data

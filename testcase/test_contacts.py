@@ -1,5 +1,4 @@
-import requests
-from business.contacts import Contacts
+from api.contacts import Contacts
 
 
 class TestContacts:

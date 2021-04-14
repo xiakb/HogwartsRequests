@@ -1,8 +1,8 @@
 from typing import List
-from business.base import Base
+from api.base_api import BaseApi
 
 
-class Contacts(Base):
+class Contacts(BaseApi):
     """通讯录"""
 
     def create_member(self, userid: str, name: str, mobile: str, department: List[int], **kwargs):
@@ -16,6 +16,7 @@ class Contacts(Base):
         :return: 对应状态信息
         """
         url = 'https://qyapi.weixin.qq.com/cgi-bin/user/create'
+        method = 'post'
         data = {
             'userid': userid,
             'name': name,
@@ -23,7 +24,8 @@ class Contacts(Base):
             'department': department
         }
         data.update(kwargs)
-        r = self.s.post(url=url, json=data)
+        # r = self.s.post(url=url, json=data)
+        r = self.request(method=method, url=url, json=data)
         return r.json()
 
     def find_member(self, userid: str):
@@ -33,8 +35,10 @@ class Contacts(Base):
         :return: 成员的信息
         """
         url = 'https://qyapi.weixin.qq.com/cgi-bin/user/get'
+        method = 'get'
         params = {'userid': userid}
-        r = self.s.get(url=url, params=params)
+        # r = self.s.get(url=url, params=params)
+        r = self.request(method=method, url=url, params=params)
         return r.json()
 
     def update_member(self, userid: str, **kwargs):
@@ -45,11 +49,13 @@ class Contacts(Base):
         :return:
         """
         url = 'https://qyapi.weixin.qq.com/cgi-bin/user/update'
+        method = 'post'
         data = {
             'userid': userid
         }
         data.update(kwargs)
-        r = self.s.post(url=url, json=data)
+        # r = self.s.post(url=url, json=data)
+        r = self.request(method=method, url=url, json=data)
         return r.json()
 
     def delete_member(self, userid: str):
@@ -59,8 +65,10 @@ class Contacts(Base):
         :return: 对应状态信息
         """
         url = 'https://qyapi.weixin.qq.com/cgi-bin/user/delete'
+        method = 'get'
         params = {'userid': userid}
-        r = self.s.get(url=url, params=params)
+        # r = self.s.get(url=url, params=params)
+        r = self.request(method=method, url=url, params=params)
         return r.json()
 
 
