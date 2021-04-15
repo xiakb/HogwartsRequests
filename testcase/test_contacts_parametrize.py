@@ -1,6 +1,6 @@
 from api.contacts import Contacts
 import pytest
-from utils.common_fun import Utils
+from utils.common_utils import CommonUtils
 
 
 class TestContactsParametrize:
@@ -11,8 +11,8 @@ class TestContactsParametrize:
 
     @pytest.mark.parametrize(
         "userid, name, mobile, department",
-        Utils.get_data("contacts.yaml", "yaml"),
-        ids=[f"create_{i[1]}" for i in Utils.get_data("contacts.yaml", "yaml")]
+        CommonUtils.get_data("contacts.yaml", "yaml"),
+        ids=[f"create_{i[1]}" for i in CommonUtils.get_data("contacts.yaml", "yaml")]
     )
     def test_create_member(self, userid, name, mobile, department):
         """测试添加成员"""
@@ -27,8 +27,8 @@ class TestContactsParametrize:
 
     @pytest.mark.parametrize(
         "userid, name, mobile, department",
-        Utils.get_data("contacts.yaml", "yaml"),
-        ids=[f"update_{i[1]}" for i in Utils.get_data("contacts.yaml", "yaml")]
+        CommonUtils.get_data("contacts.yaml", "yaml"),
+        ids=[f"update_{i[1]}" for i in CommonUtils.get_data("contacts.yaml", "yaml")]
     )
     def test_update_member(self, userid, name, mobile, department):
         """测试更新成员"""
@@ -45,8 +45,8 @@ class TestContactsParametrize:
 
     @pytest.mark.parametrize(
         "userid, name, mobile, department",
-        Utils.get_data("contacts.yaml", "yaml"),
-        ids=[f"delete_{i[1]}" for i in Utils.get_data("contacts.yaml", "yaml")]
+        CommonUtils.get_data("contacts.yaml", "yaml"),
+        ids=[f"delete_{i[1]}" for i in CommonUtils.get_data("contacts.yaml", "yaml")]
     )
     def test_delete_member(self, userid, name, mobile, department):
         """测试删除成员"""
