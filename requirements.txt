@@ -2,3 +2,4 @@ requests
 pytest
 PyYAML
 allure-pytest
+urllib3
