@@ -11,7 +11,7 @@ class BaseApi:
         """
         self.s = requests.Session()
         self.corp_id = 'ww24df69a5091eb6a5'
-        self.corp_secret = 'g0VC-ouX3uYk04fL4mxlulmFf5Xg4Q0jnyfOocjb_og'
+        self.corp_secret = 'g0VC-ouX3uYk04fL4mxlupu-z6XmvR7btVUMo2Ybsiw'
         self.s.params['access_token'] = self.get_token().get('access_token')
 
     def get_token(self, corp_id=None, corp_secret=None):
